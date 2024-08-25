@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+touch main.py
+mkdir -p models/storage_engine
+touch models/__init__.py
+touch models/user_model.py
+touch models/storage_engine/__init__.py
+touch models/storage_engine/db_engine.py
+mkdir static
+mkdir templates
+touch templates/home.html
+touch templates/login.html
+touch templates/signup.html
+mkdir -p views
+touch views/__init__.py
+touch views/home.py
+touch views/login.py
+touch views/signup.py
