@@ -20,14 +20,11 @@ from werkzeug.security import generate_password_hash
 from uuid import uuid4
 from datetime import datetime
 
-# Connect to the SQLite database (or create it if it doesn't exist)
 
-# Create the users table if it doesn't exist
-# Define the common password and hash it
 common_password = 'easy_password'
 hashed_password = generate_password_hash(common_password, method='pbkdf2:sha256')
 
-# Insert 100 user records
+
 for i in range(1, 101):
     user_id = uuid4().hex
     username = f'user{i}'
