@@ -1,0 +1,26 @@
+{% extends 'login.html' %}
+{% block auth %}
+<div class="auth-container">
+	<div class="auth-header">
+		<h2>Sign Up</h2>
+	</div>
+	<form method="post">
+		<div class="mb-3">
+			<label for="signupUsername" class="form-label">Username</label>
+			<input name = "username" type="text" class="form-control" id="signupUsername" placeholder="Enter your username" required>
+		</div>
+		<div class="mb-3">
+			<label for="signupEmail" class="form-label">Email address</label>
+			<input name="email" type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+		</div>
+		<div class="mb-3">
+			<label for="signupPassword" class="form-label">Password</label>
+			<input name="password" type="password" class="form-control" id="signupPassword" placeholder="Enter your password" required>
+		</div>
+		<button type="submit" class="btn btn-primary w-100">Sign Up</button>
+	</form >
+	<div class="auth-footer">
+		<p>Already have an account? <a href="login.html">Login</a></p>
+	</div>
+</div>
+{% endblock auth %}
