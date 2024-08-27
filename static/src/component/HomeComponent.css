@@ -1,0 +1,71 @@
+header {
+    text-align: center;
+}
+
+header img {
+  width: 8rem;
+  object-fit: contain;
+  margin: 3rem auto 1rem;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, .4));
+  box-shadow: 1px 2px 5px 6px #1c18184f;
+}
+
+header .home-title{
+  font-size: 3rem;
+  margin: 0 auto 3rem;
+  color: #018fc7;
+  text-shadow: 7px 4px 4px rgb(0 0 0 / 84%);
+
+}
+
+/* Base styles for the button */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  /* Specific styles for the "play-now" button */
+  .btn.play-now {
+    background-color: #007bff;  
+    color: #fff;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+  }
+  .home-txt {
+    font-weight: bold;
+  }
+  
+  .btn.play-now:hover {
+    background-color: #0056b3;  
+    transform: scale(1.05);  
+  }
+  
+  .btn.play-now:active {
+    background-color: #004494; /* Even darker shade on click */
+    transform: scale(1); /* Return to normal size on click */
+  }
+  
+  .btn.play-now:focus {
+    outline: 3px solid #0056b3; /* Outline for accessibility */
+    outline-offset: 2px;
+  }
+  
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .games {
+      margin: 2rem !important;
+    }
+    .games h1 {
+      font-size: 2rem;
+    }
+}
