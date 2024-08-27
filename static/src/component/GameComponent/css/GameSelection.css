@@ -1,0 +1,124 @@
+/* In GameSelection.css */
+.game-selection {
+  text-align: center;
+  color:rgb(255, 255, 255);
+  font-size: 1.5rem;
+  
+ 
+
+}
+
+
+.option {
+  
+  padding: 20px 5px;
+  cursor: pointer;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 50%);
+  transition: transform 0.3s ease-in-out;
+}
+.option:hover {
+  transform: scale(1.1); /* This makes the block grow larger */
+}
+
+.game-image {
+  width: 90px;
+  display: block;
+  margin: 0 auto;
+}
+button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 63%;
+  border: navajowhite;
+  border-radius: 13px;
+  font-family: 'Mouldy Cheese';
+  margin: 10px auto;
+}
+.title-select {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 3rem;
+  word-spacing: 2px;
+  letter-spacing: 4px;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.hoverTxt{
+  color: white;
+  background-color: #6b88a6;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: opacity 0.3s ease;
+  transition: 3s;
+}
+
+.hoverTxt:hover {
+  background-color: #0056b3;
+}
+
+.difficulty-btns {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top:10px;
+  
+
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.difficulty-btns.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.difficulty-btns button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #230b47;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.difficulty-btns button:hover {
+  background-color: #742c9b;
+}
+
+.versus-computer:hover .play-now {
+  display: none;
+  background-color: rgba(255,225,225,0.3)
+}
+
+.versus-computer:hover .difficulty-buttons {
+  display: flex;
+}
+
+.cantalob {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px; /* Optional: Add some space between the cards */
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  .cantalob {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  button{
+    width: 100%;
+  }
+}
+
+
+
+
