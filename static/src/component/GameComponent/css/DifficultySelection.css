@@ -1,0 +1,42 @@
+#difficulty-selection {
+    text-align: center;
+  }
+  
+  .title-hard {
+    font-size: 2rem;
+    color: #dfd11a;
+    /* margin-bottom: 2rem; */
+ 
+    background-color: rgb(22, 22, 22);
+    padding: 0.5rem;
+    letter-spacing: 0.1rem;
+    width: fit-content;
+    margin: 20px auto;
+    border-radius: 20px;
+  }
+  
+  .easy-btn, .hard-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 4rem auto;
+    width: 40%;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #69bcef; /* Background color for buttons */
+    color: white; /* Text color for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transition: transform 0.2s, background-color 0.2s;
+    border: none; /* Remove default button border */
+    font-size: 1.5rem;
+  }
+  
+  .easy-btn:hover {
+    background-color: #4a9ad7; /* Slightly darker shade for hover effect */
+  }
+  
+  .hard-btn:hover {
+    background-color: #4a9ad7; /* Slightly darker shade for hover effect */
+  }
+  
