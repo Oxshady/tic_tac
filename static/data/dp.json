@@ -40,6 +40,14 @@
       "wins": 0,
       "losses": 1,
       "draws": 0
+    },
+    {
+      "id": "760c",
+      "username": "sayed",
+      "gamesPlayed": 1,
+      "wins": 0,
+      "losses": 1,
+      "draws": 0
     }
   ]
 }
