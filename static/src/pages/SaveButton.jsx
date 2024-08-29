@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMutation } from '@tanstack/react-query';
 import Modal from '../UI/Modal'; // Import the Modal component
+import './Ranking.css'
 
 // Define Action function to post data
 async function Action({ username, gamesPlayed, wins, losses, draws }) {
   const response = await fetch('http://localhost:2000/profile', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
     },
     body: JSON.stringify({ username, gamesPlayed, wins, losses, draws }),
   });
@@ -69,7 +70,7 @@ function SaveButton() {
 
   return (
     <div>
-      <button onClick={handleClick} disabled={mutation.isLoading}>
+      <button onClick={handleClick} disabled={mutation.isLoading}  className="save-btn" >
         {mutation.isLoading ? 'Saving...' : 'Save'}
       </button>
       <Modal
