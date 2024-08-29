@@ -1,8 +1,14 @@
-# React + Vite
+# Tic-Tac-Toe-
+to run the game, clone the repo to your machine and run the following commands at the root of the repo in 2 different terminals:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+in the first terminal:
+```bash
+npm run dev
+```
 
-Currently, two official plugins are available:
+and in the other terminal:
+```bash
+node server.js
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+and that's it have fun :)
