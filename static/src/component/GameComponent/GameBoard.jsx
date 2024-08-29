@@ -5,6 +5,7 @@ import oImage from "../../img/o.png";
 import player1Image from "../../img/player1.jpg";
 import player2Image from "../../img/player2.png";
 import { useNavigate } from "react-router-dom";
+import WinnerPop from "./WinnerProp";
 
 // Utility functions
 const getRandomMove = (board) => {
@@ -43,7 +44,7 @@ const checkWinner = (board) => {
 function GameBoard() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(2);
   const [winner, setWinner] = useState(null);
   const [isGameOver, setIsGameOver] = useState(false);
   const [lastMoveTime, setLastMoveTime] = useState(Date.now());
@@ -57,14 +58,14 @@ function GameBoard() {
     if (isGameOver) return;
 
     const countdown = setInterval(() => {
-      setTimer((prev) => (prev > 0 ? prev - 1 : 15));
+      setTimer((prev) => (prev > 0 ? prev - 1 : 2));
     }, 1000);
 
     if (timer === 0) {
       if (isXNext) {
         // If it is X's turn and time runs out, switch to O's turn and reset timer
         setIsXNext(false);
-        setTimer(15);
+        setTimer(2);
       } else {
         // If it is O's turn and time runs out, make a move for the computer
         const computerMove = getRandomMove(board);
@@ -74,7 +75,7 @@ function GameBoard() {
           setBoard(newBoard);
           setIsXNext(true);
           setLastMoveTime(Date.now());
-          setTimer(15);
+          setTimer(2);
         }
       }
     }
@@ -98,7 +99,7 @@ function GameBoard() {
     setBoard(newBoard);
     setIsXNext(false);
     setLastMoveTime(Date.now());
-    setTimer(15);
+    setTimer(2);
   };
 
   const resetGame = () => {
@@ -106,18 +107,15 @@ function GameBoard() {
     setIsXNext(true);
     setWinner(null);
     setIsGameOver(false);
-    setTimer(15);
+    setTimer(2);
   };
 
   return (
     <div className="game-container">
       {isGameOver && <div className="overlay" />}
       {isGameOver && (
-        <div className="winner-popup">
-          <h2 className="main-pop">{winner === "Draw" ? "It's a Draw!" : `Winner: ${winner}`}</h2>
-          <button className="winner-btn" onClick={resetGame}>Try Again</button>
-          <button className="Quit-btn" onClick={handleQuit}>Quit</button>
-        </div>
+        
+        <WinnerPop winner={winner} resetGame={resetGame} handleQuit={handleQuit} />
       )}
       <div className="player-info">
         <div className={`player ${isXNext ? "act" : ""}`}>

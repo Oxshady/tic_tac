@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
- 
+import Player from "./Player";
 import GameBoard from "./GameBoard.jsx";
 import Log from "./Log";
 import { WINNING_COMBINATIONS } from "../../WINNING_COMBINATIONS.js";
@@ -9,6 +9,7 @@ import GameOver from "./GameOver.jsx";
 import ModeSelection from './ModeSelection';
 import DifficultySelection from './DifficultySelection';
 import RoomIdForm from './RoomIdForm.jsx';
+import { useSelector } from "react-redux";
 
 import './css/game.css';
 
@@ -242,12 +243,12 @@ function GameSelection() {
     socket.emit('restartGame');
   }
 
-  function handlePlayerNameChange(symbol, newName) {
-    setPlayers(prevPlayers => ({
-      ...prevPlayers,
-      [symbol]: newName
-    }));
-  }
+  // function handlePlayerNameChange(symbol, newName) {
+  //   setPlayers(prevPlayers => ({
+  //     ...prevPlayers,
+  //     [symbol]: newName
+  //   }));
+  // }
 
   const handleModeSelection = (selectedMode) => {
     setMode(selectedMode);
@@ -261,7 +262,7 @@ function GameSelection() {
 
   const handleJoinRoom = (newRoomId) => {
     setRoomId(newRoomId);
-    socket.emit('joinRoom', newRoomId);
+    // socket.emit('joinRoom', newRoomId);
   };
 
   const handleChangeMode = () => {
@@ -269,7 +270,7 @@ function GameSelection() {
     setDifficulty(null);
     setGameTurns([]);
     setRoomId(null);
-    setWaitingForOpponent(true);
+    // setWaitingForOpponent(true);
     setConnectedPlayers([]);
     setErrorMessage('');
   };
@@ -278,10 +279,11 @@ function GameSelection() {
     setDifficulty(null);
     setGameTurns([]);
     setRoomId(null);
-    setWaitingForOpponent(true);
+    // setWaitingForOpponent(true);
     setConnectedPlayers([]);
     setErrorMessage('');
   };
+ 
 
   return (
     <div>

@@ -1,16 +1,45 @@
 {
   "users": [
     {
-      "id": "1724692155079",
-      "email": "test@gmail.com",
+      "id": "1724886021666",
+      "name": "sayed",
+      "email": "teest@test.com",
       "password": "12345678"
     },
     {
-      "id": "1724709145896",
-      "email": "sha@gmail.com",
-      "password": "12345678"
+      "id": "1724886585955",
+      "name": "Said",
+      "email": "test@test.com",
+      "password": "11111111"
     }
-    
-    
+  ],
+  "profile": [
+    {
+      "id": "40f5"
+    },
+    {
+      "id": "ea19",
+      "username": "saye",
+      "gamesPlayed": 1,
+      "wins": 1,
+      "losses": 0,
+      "draws": 0
+    },
+    {
+      "id": "32e9",
+      "username": "saye",
+      "gamesPlayed": 1,
+      "wins": 1,
+      "losses": 0,
+      "draws": 0
+    },
+    {
+      "id": "9b97",
+      "username": "sayed",
+      "gamesPlayed": 1,
+      "wins": 0,
+      "losses": 1,
+      "draws": 0
+    }
   ]
 }

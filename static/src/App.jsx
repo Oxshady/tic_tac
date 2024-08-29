@@ -7,6 +7,7 @@ import {
 import { QueryClientProvider } from "@tanstack/react-query";
 // import HomePage from './pages/RootPage';
 import { queryClient } from "./util/http";
+import RankPage from "./pages/RankingPage";
 
 // import GamePage from "./pages/GamePage";
 import RootPage from "./pages/RootPage";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path: "signup",
         element: <SignUp />,
       },
+      {
+        path: 'rank',
+        element: <RankPage />,
+      }
     ],
 
     //   {

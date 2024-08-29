@@ -3,7 +3,7 @@ import {  NavLink , useLocation, useNavigate } from 'react-router-dom'
 import ProfileImg from "../img/avatar.png"
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../store/auth';
-
+import { clearUser } from '../store/userSlice';
 
 
 function SideBar() {
@@ -15,10 +15,13 @@ function SideBar() {
         setIsDashboardVisible(!isDashboardVisible);
     };
     const isAuth = useSelector(state => state.auth.isAuthenticated);
+    const userName = useSelector(state => state.user.username);
+    console.log(userName)
     
     function handleLogout() {
         dispatch(authActions.logout());
         // Remove the isAuth value from local storage
+        dispatch(clearUser());
         localStorage.removeItem('isAuthenticated');
     }
     function handleLogin() {
@@ -31,10 +34,11 @@ function SideBar() {
                 <i className="fas fa-bars" />
             </div>
             <div className={`dashboard  ${isDashboardVisible ? 'appear' : ''}`}>
-               {isAuth &&
+                {isAuth &&
                     <div className="user">
                         <img src={ProfileImg} alt="User Avatar" />
-                        <h3>Aditya Singh</h3>
+                        {userName && <h3>{userName}</h3>}
+                        {!userName && <h3>Guest</h3>}
                         <p>Pro Member</p>
                     </div>
                 } 

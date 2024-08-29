@@ -67,7 +67,7 @@ function SignUp() {
             setErrors({ email: 'Email is already registered' });
             return;
         }
-     
+    
         console.log('Form data being sent:', formData);
      
         mutate({

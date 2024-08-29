@@ -1,0 +1,64 @@
+/* Overlay to cover the entire screen */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures the modal appears above other content */
+  }
+  
+  /* Modal content box */
+  .modal-content {
+    background-color: #fff; /* White background for the modal */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    text-align: center; /* Center-align text */
+  }
+  
+  /* Title of the modal */
+  .modal-content h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #333; /* Dark color for text */
+  }
+  
+  /* Message paragraph */
+  .modal-content p {
+    font-size: 1rem;
+    color: #666; /* Slightly lighter color for the message text */
+    margin-bottom: 20px; /* Spacing below the message */
+  }
+  
+  /* Button styling */
+  .modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 5px; /* Space between buttons */
+  }
+  
+  .modal-content button:hover {
+    opacity: 0.8; /* Slightly dim the button on hover */
+  }
+  
+  /* Specific button styles */
+  .modal-content button:first-of-type {
+    background-color: #4CAF50; /* Green background for OK button */
+    color: #fff; /* White text */
+  }
+  
+  .modal-content button:last-of-type {
+    background-color: #f44336; /* Red background for Cancel button */
+    color: #fff; /* White text */
+  }
+  

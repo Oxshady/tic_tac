@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchUsers } from '../../util/http.js';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store/auth.js';
+import {setUser} from '../../store/userSlice';
 
 
 function Login() {
@@ -55,6 +56,9 @@ function Login() {
             setErrors({ email: 'Invalid email or password' });
             return;
         }
+        let userName = user.name;
+        dispatch(setUser({ username: user.name }));
+        localStorage.setItem('username', userName);
         
         // Handle successful login (e.g., dispatch login action)
         dispatch(authActions.login());
