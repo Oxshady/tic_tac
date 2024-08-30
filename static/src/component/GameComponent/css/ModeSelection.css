@@ -50,6 +50,12 @@
     justify-content: flex-start !important;
     padding: 20px ;
 }
+.human-mode  {
+  text-decoration: none;
+  font-size: 1.5rem;
+    color: #3f3b00;
+    margin: 0
+}
 
 @media (max-width: 767px) {
     .mode-option {

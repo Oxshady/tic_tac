@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { NewUser, fetchUsers } from '../../util/http';
 import { authActions } from '../../store/auth.js';
 import { useDispatch } from 'react-redux';
-import {setUser} from '../../store/userSlice';
+import { setUser } from '../../store/userSlice';
+import { useNavigate, Link } from 'react-router-dom';
 
 function SignUp() {
     const [errors, setErrors] = useState({});
@@ -32,7 +32,7 @@ function SignUp() {
         onSuccess: () => {
             // Clear form data on success
             setFormData({ name: '', email: '', password: '' });
-            navigate('/login');
+            navigate('../game');
         },
     });
 
@@ -73,16 +73,16 @@ function SignUp() {
         console.log('Form data being sent:', formData);
         console.log(formData.name);
         dispatch(setUser({ username: formData.name }));
-        localStorage.setItem("username")
+        localStorage.setItem("username", formData.name);
 
-     
+        dispatch(authActions.login());
+        navigate('../game');
         mutate({
             id: Date.now().toString(),
             name: formData.name,
             email: formData.email,
             password: formData.password,
         });
-        dispatch(authActions.login());
      }
      
 
@@ -103,10 +103,8 @@ function SignUp() {
                             type="text"
                             id="name"
                             name="name"
-                            
                             value={formData.name}
                         />
-                        
                     </div>
                     {errors.name && <span className="error">{errors.name}</span>}
                     <div className="input-group">
@@ -115,12 +113,10 @@ function SignUp() {
                             type="email"
                             id="email"
                             name="email"
-                            
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Write your email"
                         />
-                        
                     </div>
                     {errors.email && <span className="error">{errors.email}</span>}
                     <div className="input-group">
@@ -132,9 +128,7 @@ function SignUp() {
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Enter your password"
-                             
                         />
-                       
                     </div>
                     {errors.password && (
                             <span className="error">{errors.password}</span>
@@ -146,7 +140,7 @@ function SignUp() {
                     </div>
 
                     <p className="login-link">
-                        Already have an account? <Link to="/">Login</Link>
+                        Already have an account? <Link to="../login">Login</Link>
                     </p>
                     {isError && (
                         <div className="error">Signup failed: {error.message}</div>
