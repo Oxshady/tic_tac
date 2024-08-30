@@ -3,6 +3,7 @@ from models import db
 from views.signup import signup
 from views.login import login
 from views.ranking import ranking
+from views.users import usersC
 from flask import Flask, g
 from flask_cors import CORS
 if __name__ == '__main__':
@@ -11,6 +12,7 @@ if __name__ == '__main__':
     app.register_blueprint(signup)
     app.register_blueprint(login)
     app.register_blueprint(ranking)
+    app.register_blueprint(usersC)
     @app.before_request
     def before_request():
         g.db_session = db.get_session()

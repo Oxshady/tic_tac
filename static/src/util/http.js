@@ -29,11 +29,12 @@ export async function NewUser({name, email, password }) {
 }
 
 export async function fetchUsers() {
-    const data = await fetch('http://localhost:5000/login');
+    const data = await fetch('http://localhost:5000/users');
 
     if (!data.ok) {
         throw new Error(`HTTP error! status: ${data.status}`);
     }
+    console.log(data.json());
     return data.json();
 }
 
