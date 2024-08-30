@@ -39,6 +39,8 @@ class DBEngine:
 	def update(self):
 		self.__session.commit()
 
+	def all(self, obj):
+		return self.__session.query(obj).all()
 	def delete(self, obj):
 		self.__session.delete(obj)
 		self.__session.commit()
