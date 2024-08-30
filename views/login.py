@@ -16,5 +16,5 @@ def login_user():
         sess = g.db_session
         user = sess.query(User).filter_by(email=email).first()
         if check_password_hash(user.password, password):
-            return jsonify({"success":  True, "message": "login successful"}), 200
+            return jsonify({"success":  True, "message": "login successful", "name":user.username}), 200
     return jsonify({"success":  False, "message": "login failed"}), 401
