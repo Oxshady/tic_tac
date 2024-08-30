@@ -1,10 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 signup = Blueprint('signup', __name__)
 
-@signup.route('/signup', methods=['GET', 'POST'])
+@signup.route('/signup', methods=['POST'])
 def signup_user():
     from models import db
-    from models.user_model import User
+    from models.model import User
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')

@@ -6,7 +6,7 @@ login = Blueprint('login', __name__)
 @login.route('/login', methods=['GET', 'POST'])
 def login_user():
     from models import db
-    from models.user_model import User
+    from models.model import User
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -17,5 +17,5 @@ def login_user():
         user = sess.query(User).filter_by(email=email).first()
         if check_password_hash(user.password, password):
             flash('login successful')
-            return render_template('home.html')
-    return render_template('login.html')
+            return {"success":  True, "message": "login successful"}, 200
+    return {"success":  False, "message": "login failed"}, 401
