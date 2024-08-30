@@ -17,10 +17,10 @@ export default function ModeSelection({ onSelectMode }) {
         
       </div>
       
-      {/* <div className="mode-option" onClick={() => onSelectMode('computer')}>
+      <div className="mode-option" onClick={() => onSelectMode('computer')}>
         <img src={computerIcon} alt="Play vs Computer" className="mode-icon" />
         <p>Play vs Computer</p>
-      </div> */}
+      </div> 
     </div>
   );
 }
