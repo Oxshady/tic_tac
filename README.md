@@ -33,5 +33,5 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-repo/tic-tac-toe.git
+   git clone https://github.com/Oxshady/tic_tac.git
    cd tic-tac-toe
