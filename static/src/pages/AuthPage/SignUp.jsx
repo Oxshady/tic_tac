@@ -5,6 +5,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { NewUser, fetchUsers } from '../../util/http';
 import { authActions } from '../../store/auth.js';
 import { useDispatch } from 'react-redux';
+import {setUser} from '../../store/userSlice';
 
 function SignUp() {
     const [errors, setErrors] = useState({});
@@ -71,6 +72,9 @@ function SignUp() {
     
         console.log('Form data being sent:', formData);
         console.log(formData.name);
+        dispatch(setUser({ username: formData.name }));
+        localStorage.setItem("username")
+
      
         mutate({
             id: Date.now().toString(),
