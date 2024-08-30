@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { NewUser, fetchUsers } from '../../util/http';
+import { authActions } from '../../store/auth.js';
+import { useDispatch } from 'react-redux';
 
 function SignUp() {
     const [errors, setErrors] = useState({});
@@ -11,6 +13,7 @@ function SignUp() {
         email: '',
         password: '',
     });
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     function handleClose() {
@@ -42,8 +45,6 @@ function SignUp() {
         }
         if (!data.password) {
             formErrors.password = 'Password is required';
-        } else if (data.password.length < 8) {
-            formErrors.password = 'Password must be at least 8 characters long';
         }
         return formErrors;
     }
@@ -69,6 +70,7 @@ function SignUp() {
         }
     
         console.log('Form data being sent:', formData);
+        console.log(formData.name);
      
         mutate({
             id: Date.now().toString(),
@@ -76,6 +78,7 @@ function SignUp() {
             email: formData.email,
             password: formData.password,
         });
+        dispatch(authActions.login());
      }
      
 
@@ -139,7 +142,7 @@ function SignUp() {
                     </div>
 
                     <p className="login-link">
-                        Already have an account? <Link to="../login">Login</Link>
+                        Already have an account? <Link to="/">Login</Link>
                     </p>
                     {isError && (
                         <div className="error">Signup failed: {error.message}</div>
