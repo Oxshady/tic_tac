@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { NewUser, fetchUsers } from '../../util/http';
+import { useMutation } from '@tanstack/react-query';
+import { NewUser } from '../../util/http';
 
 function SignUp() {
     const [errors, setErrors] = useState({});
@@ -18,10 +18,10 @@ function SignUp() {
     }
 
     // Fetch existing users
-    const { data: users = [] } = useQuery({
-        queryKey: ['users'],
-        queryFn: fetchUsers,
-    });
+    // const { data: users = [] } = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: fetchUsers,
+    // });
 
     const { mutate, isLoading, isError, error } = useMutation({
         mutationFn: NewUser,
@@ -42,9 +42,7 @@ function SignUp() {
         }
         if (!data.password) {
             formErrors.password = 'Password is required';
-        } else if (data.password.length < 8) {
-            formErrors.password = 'Password must be at least 8 characters long';
-        }
+        } 
         return formErrors;
     }
 
@@ -62,16 +60,15 @@ function SignUp() {
             return;
         }
      
-        const emailExists = users.some((user) => user.email === formData.email);
-        if (emailExists) {
-            setErrors({ email: 'Email is already registered' });
-            return;
-        }
+        // const emailExists = users.some((user) => user.email === formData.email);
+        // if (emailExists) {
+        //     setErrors({ email: 'Email is already registered' });
+        //     return;
+        // }
     
         console.log('Form data being sent:', formData);
      
         mutate({
-            id: Date.now().toString(),
             name: formData.name,
             email: formData.email,
             password: formData.password,

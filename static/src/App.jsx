@@ -17,6 +17,7 @@ import LoginPage from "./pages/AuthPage/Login";
 import SignUp from "./pages/AuthPage/SignUp";
 import GameSelection from "./component/GameComponent/GameSelection";
 // import GameBoard from "./component/GameComponent/css/GameBoard";
+import PlayerTwoMain from "./component/TwoPlayer/PlayerTwoMain";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ const router = createBrowserRouter([
               </PrivateRoute>
             ),
           },
+          {
+            path: 'humans',
+            element: (
+              <PrivateRoute>
+                <PlayerTwoMain />,
+              </PrivateRoute>
+            ),
+          }
           // {
           //   path: "multiplayer",
           //   element: (

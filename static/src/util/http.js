@@ -1,7 +1,7 @@
 import { QueryClient } from '@tanstack/react-query';
 
 export const queryClient = new QueryClient();
-export async function NewUser({ id, name, email, password }) {
+export async function NewUser({ name, email, password }) {
     try {
         const response = await fetch('http://localhost:2000/users', {
             method: 'POST',
@@ -9,7 +9,6 @@ export async function NewUser({ id, name, email, password }) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id,
                 name,
                 email,
                 password
