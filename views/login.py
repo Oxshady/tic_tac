@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, g
+from flask import Blueprint, request, jsonify, g
 from models import db
 from werkzeug.security import check_password_hash
 login = Blueprint('login', __name__)
@@ -12,9 +12,9 @@ def login_user():
         email = data.get('email')
         password = data.get('password')
         if not email or not password:
-            return {"success":  False, "message": "please fill out all fields"}, 400
+            return jsonify({"success":  False, "message": "please fill out all fields"}), 400
         sess = g.db_session
         user = sess.query(User).filter_by(email=email).first()
         if check_password_hash(user.password, password):
-            return {"success":  True, "message": "login successful"}, 200
-    return {"success":  False, "message": "login failed"}, 401
+            return jsonify({"success":  True, "message": "login successful"}), 200
+    return jsonify({"success":  False, "message": "login failed"}), 401
