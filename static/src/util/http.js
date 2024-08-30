@@ -1,18 +1,17 @@
 import { QueryClient } from '@tanstack/react-query';
 
 export const queryClient = new QueryClient();
-export async function NewUser({ id, name, email, password }) {
+export async function NewUser({name, email, password }) {
     try {
-        const response = await fetch('http://localhost:2000/users', {
+        const response = await fetch('http://localhost:5000/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id,
-                name,
-                email,
-                password
+                "username": name,
+                "email":email,
+                "password":password
             })
         });
 
@@ -30,7 +29,7 @@ export async function NewUser({ id, name, email, password }) {
 }
 
 export async function fetchUsers() {
-    const data = await fetch('http://localhost:2000/users');
+    const data = await fetch('http://localhost:5000/login');
 
     if (!data.ok) {
         throw new Error(`HTTP error! status: ${data.status}`);
@@ -40,7 +39,6 @@ export async function fetchUsers() {
 
 export async function fetchProfile() {
     const data = await fetch('http://localhost:2000/profile');
-
     if (!data.ok) {
         throw new Error(`HTTP error! status: ${data.status}`);
     }

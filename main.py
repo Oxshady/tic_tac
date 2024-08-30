@@ -4,6 +4,7 @@ from views.signup import signup
 from views.login import login
 from views.ranking import ranking
 from flask import Flask, g
+from flask_cors import CORS
 if __name__ == '__main__':
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "jadsnjkndsjkandjknjkasndjkansjkn adjk"
@@ -16,4 +17,5 @@ if __name__ == '__main__':
     @app.teardown_request
     def teardown_request(exception=None):
         db.remove_session()
-    app.run(debug=True)
+    CORS(app, resources={r"/*": {"origins": "*"}})
+    app.run(debug=True, port=5000)
