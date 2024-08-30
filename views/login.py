@@ -8,8 +8,9 @@ def login_user():
     from models import db
     from models.model import User
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
         if not email or not password:
             return {"success":  False, "message": "please fill out all fields"}, 400
         sess = g.db_session

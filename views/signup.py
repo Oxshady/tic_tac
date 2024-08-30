@@ -6,9 +6,10 @@ def signup_user():
     from models import db
     from models.model import User
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        email = request.form.get('email')
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
+        email = data.get('email')
         if not username or not password:
             return {"success":  False, "message": "please fill out all fields"}, 400
         user = User(**{"username":username, "password":password, "email":email})
