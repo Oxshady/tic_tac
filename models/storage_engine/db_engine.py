@@ -1,7 +1,7 @@
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 from os import getenv
-from models.user_model import Base
+from models.model import Base
 
 class DBEngine:
 	__engine = None
