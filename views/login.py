@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, g
+from flask import Blueprint, request, redirect, url_for, g
 from models import db
 from werkzeug.security import check_password_hash
 login = Blueprint('login', __name__)
 
-@login.route('/login', methods=['GET', 'POST'])
+@login.route('/login', methods=['POST'])
 def login_user():
     from models import db
     from models.model import User
@@ -11,11 +11,9 @@ def login_user():
         email = request.form.get('email')
         password = request.form.get('password')
         if not email or not password:
-            flash('please fill out all fields')
-            return render_template('login.html')
+            return {"success":  False, "message": "please fill out all fields"}, 400
         sess = g.db_session
         user = sess.query(User).filter_by(email=email).first()
         if check_password_hash(user.password, password):
-            flash('login successful')
             return {"success":  True, "message": "login successful"}, 200
     return {"success":  False, "message": "login failed"}, 401
