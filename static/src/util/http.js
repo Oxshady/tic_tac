@@ -29,19 +29,24 @@ export async function NewUser({name, email, password }) {
 }
 
 export async function fetchUsers() {
-    const data = await fetch('http://localhost:5000/users');
+    const response= await fetch('http://localhost:5000/users');
 
-    if (!data.ok) {
+    if (!response.ok) {
         throw new Error(`HTTP error! status: ${data.status}`);
     }
-    console.log(data.json());
-    return data.json();
+    const data = await response.json();
+    console.log(data);
+    return data;
 }
 
+
+// return win - lose - number played- name
 export async function fetchProfile() {
     const data = await fetch('http://localhost:2000/profile');
     if (!data.ok) {
         throw new Error(`HTTP error! status: ${data.status}`);
     }
+    // print all scores and data prfile form database (name - win - lose - number played- name)
+    console.log(data.json())
     return data.json();
 }

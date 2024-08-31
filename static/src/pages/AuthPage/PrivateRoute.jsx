@@ -16,7 +16,7 @@ const PrivateRoute = ({ children }) => {
 
   if (!isAuth) {
     // Redirect the user to login and store the original path
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="../signup" state={{ from: location }} />;
   }
 
   return children;

@@ -5,8 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchUsers } from '../../util/http.js';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store/auth.js';
-import {setUser} from '../../store/userSlice';
-
+import { setUser } from '../../store/userSlice';
 
 function Login() {
     const [errors, setErrors] = useState({});
@@ -18,6 +17,7 @@ function Login() {
         queryKey: ['users'],
         queryFn: fetchUsers,
     });
+    console.log('Fetched users:', users);
 
     function handleClose() {
         navigate('..');
@@ -40,33 +40,33 @@ function Login() {
         event.preventDefault();
         const fd = new FormData(event.target);
         const data = Object.fromEntries(fd.entries());
-
+    
         // Validate the form data
         const formErrors = validateLogin(data);
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
             return;
         }
-
-        // Check if email and password match any user
-        const user = users.find(
-            (user) => user.email === data.email && user.password === data.password
-        );
-        if (!user) {
+    
+        // Check if email matches any user
+        const user = users.find((user) => user.email === data.email);
+    
+        if (user) {
+            // If email matches, store user data in state and local storage
+            dispatch(setUser({ username: user.username }));
+            localStorage.setItem('username', user.username);
+    
+            // Handle successful login (e.g., dispatch login action)
+            dispatch(authActions.login());
+    
+            // Navigate to the user's page after successful login
+            navigate('../game');
+        } else {
+            // If no matching user is found, show an error message
             setErrors({ email: 'Invalid email or password' });
-            return;
         }
-        let userName = user.name;
-        dispatch(setUser({ username: user.name }));
-        localStorage.setItem('username', userName);
-        
-        // Handle successful login (e.g., dispatch login action)
-        dispatch(authActions.login());
-
-        // If successful, navigate to the user's page
-        navigate('../game');
     }
-
+    
     return (
         <>
             <button className="close-button" onClick={handleClose}>
@@ -92,7 +92,6 @@ function Login() {
                             id="password"
                             name="password"  // corrected name attribute
                             placeholder="Password"
-                            
                         />
                         {errors.password && <span className="error">{errors.password}</span>}
                     </div>
