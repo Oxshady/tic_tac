@@ -34,8 +34,5 @@ Before you begin, ensure you have the following installed:
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/Oxshady/tic_tac.git
-   cd tic-tac-toe
-   chmod 555 game.sh
-   python3 main.py
-   cd static
-   npm run dev
+   chmod 555 run.sh
+   ./run.sh
