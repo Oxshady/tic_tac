@@ -11,7 +11,7 @@ Welcome to the Tic Tac Toe Game! This web-based application brings the classic g
 - **Real-Time Multiplayer**: Engage in real-time matches with friends using Socket.IO, ensuring low-latency gameplay.
 - **Responsive Design**: Enjoy the game on any device—desktop, tablet, or mobile—with a fully responsive design.
 - **Modern UI**: The user interface is built with React, offering an intuitive and dynamic experience.
-- **Robust Backend**: The game logic and player management are handled by Flask, a powerful yet lightweight web framework.
+- **Robust Backend**: The game logic and player management are handled by Flask, and node 
 
 ## 🛠️ Technologies Used
 
