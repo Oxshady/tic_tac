@@ -19,6 +19,7 @@ import GameSelection from "./component/GameComponent/GameSelection";
 // import GameBoard from "./component/GameComponent/css/GameBoard";
 import PlayerTwoMain from "./component/TwoPlayer/PlayerTwoMain";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
                 <PlayerTwoMain />,
               </PrivateRoute>
             ),
+          },
+          {
+            path: 'signup',
+            element: <SignUp />
           }
           // {
           //   path: "multiplayer",
@@ -71,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: 'rank',
         element: <RankPage />,
+      },
+      {
+        path: '*',
+        element: <Home />
       }
     ],
 

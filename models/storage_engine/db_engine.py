@@ -8,11 +8,11 @@ class DBEngine:
 	__session = None
 
 	def __init__(self) -> None:
-		name = getenv('HBNB_MYSQL_DB')
-		host = getenv('HBNB_MYSQL_HOST')
-		user = getenv('HBNB_MYSQL_USER')
-		passw = getenv('HBNB_MYSQL_PWD')
-		url = f"mysql+mysqldb://{user}:{passw}@{host}:3306/{name}"
+		name = 'tictac'
+		user = 'youssef'
+		password = 'NewStrongPassword123!'
+		host = 'localhost'
+		url = f"mysql+mysqldb://{user}:{password}@{host}:3306/{name}"
 		self.__engine = create_engine(
 			url=url,
 			pool_pre_ping=True

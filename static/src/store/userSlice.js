@@ -4,7 +4,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const getStoredUsername = () => {
   try {
     const storedUsername = localStorage.getItem("username");
-    console.log(storedUsername)
     return storedUsername ? storedUsername : null;
   } catch (error) {
     console.error("Failed to parse username from localStorage:", error);

@@ -31,8 +31,10 @@ function SignUp() {
         mutationFn: NewUser,
         onSuccess: () => {
             // Clear form data on success
+            
             setFormData({ name: '', email: '', password: '' });
-            navigate('../game');
+            dispatch(authActions.login());
+            navigate('/');
         },
     });
 
@@ -70,15 +72,13 @@ function SignUp() {
             return;
         }
     
-        console.log('Form data being sent:', formData);
-        console.log(formData.name);
         dispatch(setUser({ username: formData.name }));
         localStorage.setItem("username", formData.name);
 
-        dispatch(authActions.login());
+        // dispatch(authActions.login());
         navigate('../game');
         mutate({
-            id: Date.now().toString(),
+            
             name: formData.name,
             email: formData.email,
             password: formData.password,
