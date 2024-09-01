@@ -16,7 +16,7 @@ function SideBar() {
     };
     const isAuth = useSelector(state => state.auth.isAuthenticated);
     const userName = useSelector(state => state.user.username);
-    console.log(userName)
+    
     
     function handleLogout() {
         dispatch(authActions.logout());

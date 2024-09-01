@@ -19,7 +19,7 @@ async function Action({ username, gamesPlayed, wins, losses, draws }) {
   }
 
   const data = await response.json();
-  console.log('Profile data successfully posted:', data);
+  
   return data;
 }
 

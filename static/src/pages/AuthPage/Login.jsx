@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
-import { useQuery } from '@tanstack/react-query';
-import { fetchUsers } from '../../util/http.js';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { login } from '../../util/http.js'; // Import the login function
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store/auth.js';
 import { setUser } from '../../store/userSlice';
@@ -11,13 +11,23 @@ function Login() {
     const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
-    // Fetch existing users
-    const { data: users = [] } = useQuery({
-        queryKey: ['users'],
-        queryFn: fetchUsers,
+ 
+    // Define mutation for login
+    const mutation = useMutation({
+        mutationFn: login,
+        onSuccess: (data) => {
+            // Handle successful login
+            dispatch(setUser({ username: data.name }));
+            localStorage.setItem('username', data.username);
+            dispatch(authActions.login());
+            navigate('../game');
+        },
+        onError: (error) => {
+            // Log error details to the console
+            console.error('Login error:', error.message);
+            setErrors({ general: error.message });
+        }
     });
-    console.log('Fetched users:', users);
 
     function handleClose() {
         navigate('..');
@@ -40,33 +50,21 @@ function Login() {
         event.preventDefault();
         const fd = new FormData(event.target);
         const data = Object.fromEntries(fd.entries());
-    
+
         // Validate the form data
         const formErrors = validateLogin(data);
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
             return;
         }
-    
-        // Check if email matches any user
-        const user = users.find((user) => user.email === data.email);
-    
-        if (user) {
-            // If email matches, store user data in state and local storage
-            dispatch(setUser({ username: user.username }));
-            localStorage.setItem('username', user.username);
-    
-            // Handle successful login (e.g., dispatch login action)
-            dispatch(authActions.login());
-    
-            // Navigate to the user's page after successful login
-            navigate('../game');
-        } else {
-            // If no matching user is found, show an error message
-            setErrors({ email: 'Invalid email or password' });
-        }
+
+        // Call login mutation
+        mutation.mutate({
+            email: data.email,
+            password: data.password
+        });
     }
-    
+
     return (
         <>
             <button className="close-button" onClick={handleClose}>
@@ -80,7 +78,7 @@ function Login() {
                         <input
                             type="email"
                             id="email"
-                            name="email"  // corrected name attribute
+                            name="email"
                             placeholder="Enter your Email"
                         />
                         {errors.email && <span className="error">{errors.email}</span>}
@@ -90,11 +88,12 @@ function Login() {
                         <input
                             type="password"
                             id="password"
-                            name="password"  // corrected name attribute
+                            name="password"
                             placeholder="Password"
                         />
                         {errors.password && <span className="error">{errors.password}</span>}
                     </div>
+                    {errors.general && <span className="error">{errors.general}</span>}
                     <button type="submit" className="login-button">
                         Sign In
                     </button>

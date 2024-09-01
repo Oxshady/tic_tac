@@ -72,8 +72,6 @@ function SignUp() {
             return;
         }
     
-        console.log('Form data being sent:', formData);
-        console.log(formData.name);
         dispatch(setUser({ username: formData.name }));
         localStorage.setItem("username", formData.name);
 
