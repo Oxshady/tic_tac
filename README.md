@@ -1,7 +1,5 @@
 # Tic Tac Toe Game
 
-![Tic Tac Toe Logo](path/to/logo-image.png)
-
 ## 🎮 Overview
 
 Welcome to the Tic Tac Toe Game! This web-based application brings the classic game to the digital world, allowing you to challenge your friends in real-time. Built with modern web technologies, this game offers a smooth, interactive, and responsive gaming experience.
