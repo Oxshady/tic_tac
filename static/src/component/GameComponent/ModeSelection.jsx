@@ -10,12 +10,12 @@ export default function ModeSelection({ onSelectMode }) {
   return (
     <div id="mode-selection">
         <h2>Select Game Mode</h2>
-      <div className="mode-option">
-        <img src={humanIcon} alt="Play vs Human" className="mode-icon" />
-        
-        <Link to="humans" className='human-mode'>Play vs Human</Link>
-        
-      </div>
+        <Link to="humans" className='human-mode'>
+          <div className="mode-option">
+              <img src={humanIcon} alt="Play vs Human" className="mode-icon" />
+              <p>Play vs Human</p>
+          </div>
+        </Link>
       
       <div className="mode-option" onClick={() => onSelectMode('computer')}>
         <img src={computerIcon} alt="Play vs Computer" className="mode-icon" />

@@ -375,3 +375,13 @@ border-radius: 0 2rem 2rem 0;
 .home-btn:active {
   background-color: #4a8fd4;
 }
+
+
+.navlink {
+  color: #fff;
+
+}
+
+.nav {
+  text-decoration: none;
+}
