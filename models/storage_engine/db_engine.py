@@ -8,10 +8,10 @@ class DBEngine:
 	__session = None
 
 	def __init__(self) -> None:
-		name = 'tictac'
-		user = 'youssef'
-		password = 'NewStrongPassword123!'
-		host = 'localhost'
+		name = getenv("DB")
+		user = getenv("USER")
+		password = getenv("PWD")
+		host = getenv("HOST")
 		url = f"mysql+mysqldb://{user}:{password}@{host}:3306/{name}"
 		self.__engine = create_engine(
 			url=url,

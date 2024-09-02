@@ -18,6 +18,14 @@ def get_ranking(ranking_id):
 
 @ranking.route('/api/ranking', methods=['GET','PUT'])
 def get_rankings():
+    if request.method == "PUT":
+        data = request.get_json()
+        if data is None:
+            return jsonify({}), 400
+        for rank in data:
+            r = Ranks(**rank)
+            db.save(r)
+        return jsonify({}), 201
     ranking_sorted = None
     sort_by = request.args.get('sort_by')
     if sort_by == 'win':
