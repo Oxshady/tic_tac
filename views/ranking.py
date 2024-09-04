@@ -26,14 +26,5 @@ def get_rankings():
             r = Ranks(**rank)
             db.save(r)
         return jsonify({}), 201
-    ranking_sorted = None
-    sort_by = request.args.get('sort_by')
-    if sort_by == 'win':
-        ranking_sorted = sorted(rankings_list, key=lambda x: x['win'])
-    elif sort_by == 'loss':
-        ranking_sorted = sorted(rankings_list, key=lambda x: x['loss'])
-    elif sort_by == 'draw':
-        ranking_sorted = sorted(rankings_list, key=lambda x: x['draw'])
-    elif sort_by == 'score':
-        ranking_sorted = sorted(rankings_list, key=lambda x: x['score'])
-    return jsonify(ranking_sorted)
+    ranking_sorted = sorted(rankings_list, key=lambda x: x['win'])
+    return jsonify(rankings_list)
